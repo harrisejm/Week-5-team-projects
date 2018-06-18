@@ -48,41 +48,41 @@ $(document).ready(function(){
   pickUpText = 1; // second text
   locationText = 1; // third text
 
-  // question2 = 3;
-  // question3 = 3;
-
   var response1 = ""
   var response2 = ""
   var response3 = ""
-  ///// response to question 1
 
-  //var textMessage = 0;
+  // var introDarkResponses = ["dark intro = DARK response", "crazy intro = DARK response", "normal intro= Dark response"];
+  // var introCrazyResponses = ["dark intro= CRAZY response", "crazy intro= CRAZY response", "normal intro= CRAZY response"];
+  // var introNormalResponses = ["dark intro= NORMAL response", "crazy intro = NORMAL response", "normal intro = NORMAL response"];
+  //
 
 
   Person.prototype.introText = function(){
     //Dark person
+
     if (profileDark === true && firstText === 1) {
-      response1 = "dark intro = DARK response"
+      response1 = "dark intro = DARK response";
       this.dark += 1;
     } else if (profileDark === true && firstText === 2) {
-      response1 = "crazy intro = DARK response"
+      response1 = "crazy intro = DARK response";
     } else if (profileDark === true && firstText === 3) {
-      response1 = "normal intro= Dark response"
+      response1 = "normal intro= Dark response";
       //Crazy person
     } else if (profileCrazy === true && firstText === 1) {
-      response1 = "dark intro= CRAZY response"
+      response1 = "dark intro= CRAZY response";
     } else if (profileCrazy === true && firstText=== 2) {
-      response1 = "crazy intro= CRAZY response"
+      response1 = "crazy intro= CRAZY response";
       this.crazy += 1;
     } else if (profileCrazy === true && firstText=== 3) {
-      response1 = "normal intro= CRAZY response"
+      response1 = "normal intro= CRAZY response";
       //Normal Person
     } else if (profileNormal === true && firstText === 1) {
-      response1 = "dark intro= NORMAL response"
+      response1 = "dark intro= NORMAL response";
     } else if (profileNormal === true && firstText=== 2) {
-      response1 = "crazy intro = NORMAL response"
+      response1 = "crazy intro = NORMAL response";
     } else if (profileNormal === true && firstText === 3) {
-      response1 = "normal intro = NORMAL response"
+      response1 = "normal intro = NORMAL response";
       this.normal += 1;
     }
 
@@ -117,7 +117,6 @@ $(document).ready(function(){
 
 
   }
-  //pickUpLine();
 
   Person.prototype.dateLocation = function(){
     if (profileDark === true && locationText  === 1) {
@@ -144,9 +143,8 @@ $(document).ready(function(){
       response3 = "normal location= NORMAL response";
       this.normal += 1;
     }
-
   }
-  //location();
+
   profile1.dateLocation();
   profile1.introText();
   profile1.pickUpLine();
