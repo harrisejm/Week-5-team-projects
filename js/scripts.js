@@ -7,6 +7,7 @@ var Person = function(name, age, aboutMe, astrolgical, occupation) {
   this.dark = dark;
 }
 
+
 var profileNames = ["Helga", "Mindy", "Jane "];
 var profileAges = [45];
 var profileAboutMes = [
@@ -18,6 +19,9 @@ var profileAstrologicals = ["Scorpio"];
 var profileOccupations = ["Beer Witch"];
 
 $(document).ready(function(){
+
+
+
 
 
 
