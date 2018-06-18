@@ -14,7 +14,7 @@ var profileAboutMes = [
                         "My name is " + profileNames[Math.floor((Math.random() * 3))] + " I hail from Bavaria. I like beer, bratwurst and Oompah music.  I hold the record for Das Boot in all of Germany. I like strong aggressive men.",
                       ];
 
-                      
+
 var profileAstrologicals = ["Scorpio"];
 var profileOccupations = ["Beer Witch"];
 
@@ -23,10 +23,9 @@ $(document).ready(function(){
 
 
 
-
+test
 
 document.getElementById("test").innerHTML = profileAboutMes;
 
 
 });
-
