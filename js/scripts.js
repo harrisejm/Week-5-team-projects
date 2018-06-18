@@ -5,3 +5,4 @@ var person = function(name, age, aboutMe, astrolgical, occupation) {
   this.astrolgical = astrolgical;
   this.occupation = occupation;
 }
+test
