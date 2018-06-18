@@ -7,6 +7,7 @@ var Person = function(name, age, aboutMe, astrolgical, occupation) {
   this.dark = dark;
 }
 
+
 var profileNames = ["Helga", "Mindy", "Jane "];
 var profileAges = [45];
 var profileAboutMes = [
@@ -28,3 +29,4 @@ document.getElementById("test").innerHTML = profileAboutMes;
 
 
 });
+
