@@ -1,8 +1,7 @@
 //Constructors
-var Person = function(name, age, aboutMe, astrological, occupation, hobby, profileImage, dark, crazy, normal) {
+var Person = function(name, age, astrological, occupation, hobby, profileImage, dark, crazy, normal, aboutMe) {
   this.name = name;
   this.age = age;
-  this.aboutMe= aboutMe;
   this.astrological = astrological;
   this.occupation = occupation;
   this.hobby = hobby;
@@ -10,6 +9,7 @@ var Person = function(name, age, aboutMe, astrological, occupation, hobby, profi
   this.dark = dark;
   this.crazy = crazy;
   this.normal = normal;
+  this.aboutMe= aboutMe;
 }
 
 //Profile Information
@@ -36,18 +36,28 @@ var Player = new Person ()
 
 
 $(document).ready(function(){
+  $("#sign-up").click(function() {
+    $("#sign-up").hide();
+    $("#create-profile").fadeIn();
+  })
   $("#form-match").submit(function(event) {
     event.preventDefault();
-    var inputtedName = $("#name").val();
-    var inputtedLowerAge = $("#lower-age").val();
-    var inputtedUpperAge = $("#upper-age").val();
-    var inputtedGender = $("input:radio[name=gender]:checked").val();
-
-    Player = new Person (inputtedName);
+    var inputtedName = $("#user-name").val();
+    var inputtedAge = $("#user-age").val();
+    var inputtedAstrological = $("#astrological-sign").val();
+    var inputtedOccupation = $("#user-occupation").val();
+    var inputtedHobby = $("input:radio[name=hobby]:checked").val();
+    if (inputtedHobby = "user-input-hobby") {
+      inputtedHobby = $("#user-input-hobby").val();
+    }
+    Player = new Person (inputtedName, inputtedAge, inputtedAstrological, inputtedOccupation, inputtedHobby);
+    if (Player.name === "" || Player.occupation === "" || Player.hobby === "") {
+      $("#blank-form").show();
+    }
     console.log(Player);
     //Create Panels
     for (i = 0; i < profileNames.length; i++) {
-      var newPerson = new Person (profileNames[i], profileAges[i], profileAboutMes[i], profileAstrologicals[i], profileOccupations[i], profileImages[i]);
+      var newPerson = new Person (profileNames[i], profileAges[i], profileAstrologicals[i], profileOccupations[i], profileImages[i], profileAboutMes[i]);
       $("#profiles").append(
                             '<div class="panel panel-danger col-md-4">' +
                               '<h2 class = "panel-heading"><span class = "profile-name" >' + newPerson.name + '</span></h2>' +

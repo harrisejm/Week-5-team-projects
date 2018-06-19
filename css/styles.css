@@ -2,7 +2,9 @@ img {
 
   width: 100%;
 }
-
+.initial-hidden {
+  display:none;
+}
 
 .moveMeassage {
   margin-left: 100px;
