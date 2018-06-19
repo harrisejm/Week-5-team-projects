@@ -1,17 +1,19 @@
 //Constructors
-var Person = function(name, age, astrological, occupation, hobby, profileImage, dark, crazy, normal, aboutMe) {
+var Person = function(name, age, astrological, occupation, hobby, profileImage, score, aboutMe) {
   this.name = name;
   this.age = age;
   this.astrological = astrological;
   this.occupation = occupation;
   this.hobby = hobby;
   this.profileImage = profileImage;
-  this.dark = dark;
-  this.crazy = crazy;
-  this.normal = normal;
+  this.likeScore = score;
   this.aboutMe= aboutMe;
 }
 
+var Messages = function(name, localLikeScore) {
+  this.name = name;
+  this.localLikeScore = localLikeScore;
+}
 //Profile Information
 var profileNames = ["Dutchess Capreanu", "Supul Sinac", "Brenda Smith"];
 var profileAges = [30, 27, 25];
@@ -20,16 +22,14 @@ var profileAboutMes = [
 
                         "On the prowl for that special someone who can respect my space when I need it (regular monthly trips).",
 
-                        "Not really sure what I am doing on here, my friends made me set up a profile.",
+                        "Vegan.  Not really sure what I am doing on here, my friends made me set up a profile. Must love dogs."
 
                       ];
 var profileAstrologicals = ["Capricorn","Leo","Virgo"];
 var profileOccupations = ["Night Shift", "Bartender", "Wage Slave"];
-var profileHobbies = ["Candelabra", ""]
+var profileHobbies = ["Candelabra", "Hunting", "Netflix"];
 var profileImages = ["vampire", "wolf", "basic"];
-var profileDarkScore = [10, 5, 2];
-var profileCrazyScore = [5, 2, 10];
-var profileNormalScore = [2, 10, 5];
+var profileLikeScore = [10, 10, 10];
 
 //Global variables
 var Player = new Person ()
@@ -47,97 +47,142 @@ $(document).ready(function(){
     var inputtedAstrological = $("#astrological-sign").val();
     var inputtedOccupation = $("#user-occupation").val();
     var inputtedHobby = $("input:radio[name=hobby]:checked").val();
-    if (inputtedHobby = "user-input-hobby") {
+    if (inputtedHobby === "user-input-hobby") {
       inputtedHobby = $("#user-input-hobby").val();
     }
     Player = new Person (inputtedName, inputtedAge, inputtedAstrological, inputtedOccupation, inputtedHobby);
     if (Player.name === "" || Player.occupation === "" || Player.hobby === "") {
       $("#blank-form").show();
-    }
-    console.log(Player);
-    //Create Panels
-    for (i = 0; i < profileNames.length; i++) {
-      var newPerson = new Person (profileNames[i], profileAges[i], profileAstrologicals[i], profileOccupations[i], profileImages[i], profileAboutMes[i]);
-      $("#profiles").append(
-                            '<div class="panel panel-danger col-md-4">' +
-                              '<h2 class = "panel-heading"><span class = "profile-name" >' + newPerson.name + '</span></h2>' +
-                              '<div class="panel-body">' +
-                                '<div class="row">' +
-                                  '<div class="col-md-6">' +
-                                    '<strong>Age:</strong> <span class = "profile-age" >' + newPerson.age + '</span>' +
-                                  '</div>' +
-                                  '<div class="col-md-6">' +
-                                    '<strong>Interested In:</strong> <span class = "gender-interests">Male</span>' +
+    } else {
+      console.log(Player);
+      //Create Panels
+      for (i = 0; i < profileNames.length; i++) {
+        var newPerson = new Person (profileNames[i], profileAges[i], profileAstrologicals[i], profileOccupations[i], profileHobbies[i], profileImages[i], profileLikeScore[i], profileAboutMes[i]);
+        $("#profiles").append(
+                              '<div class="col-md-4">' +
+                                '<div class="panel panel-danger">' +
+                                  '<h2 class = "panel-heading profile-h2"><span class = "profile-name" >' + newPerson.name + '</span></h2>' +
+                                  '<div class="panel-body profile-panels">' +
+                                    '<div class="row">' +
+                                      '<div class="col-md-6">' +
+                                        '<strong>Age:</strong> <span class = "profile-age" >' + newPerson.age + '</span>' +
+                                      '</div>' +
+                                      '<div class="col-md-6">' +
+                                        '<strong>Interested In:</strong> <span class = "gender-interests">Male</span>' +
+                                      '</div>' +
+                                    '</div>' +
+                                    '<img src="img/' + newPerson.profileImage + '.jpg" alt="">' +
+                                    '<div class="">' +
+                                      '<p><strong>Astrological Sign:</strong> <span class ="profile-astrological">' + newPerson.astrological + '</span></p>' +
+                                      '<p><strong>Occupation:</strong> <span class = "profile-occupation">' + newPerson.occupation + '</span></p>' +
+                                      '<p><strong>Hobby:</strong> <span class = "profile-hobby">' + newPerson.hobby + '</span></p>' +
+                                      '<strong>About me:</strong> <span class = "profile-about-me">' + newPerson.aboutMe + '</span>' +
+                                    '</div>' +
+                                    '<div class="panel-body row">' +
+                                      '<button type="button" class="btn btn-primary" id="message-' + newPerson.profileImage + '">Message Me!</button>' +
+                                      '<div class="newMessage">' +
+                                        '<p><strong>1 New Message</strong></p>' +
+                                      '</div>' +
+                                    '</div>' +
                                   '</div>' +
                                 '</div>' +
-                              '</div>' +
-                              '<img src="img/' + newPerson.profileImage + '.jpg" alt="">' +
-                              '<div class="initial-hidden">' +
-                                '<p><strong>Astrological Sign:</strong> <span class ="profile-astrological">' + newPerson.astrological + '</span></p>' +
-                                '<p><strong>Occupation:</strong> <span class = "profile-occupation">' + newPerson.occupation + '</span></p>' +
-                                '<strong>About me:</strong> <span class = "profile-about-me">' + newPerson.aboutMe + '</span>' +
-                              '</div>' +
-                            '</div>'
-                          );
+                                '<div class="panel panel-primary initial-hidden message-box-' + newPerson.profileImage + '">' +
+                                  '<div class="panel-heading">' +
+                                    'Doge is Online' +
+                                  '</div>' +
+                                  '<div class="panel-body">' +
+
+                                    '<div class="box1">' +
+                                      '<p class="sendMsg"><strong>*Send Doge a message*</strong></p>' +
+                                      '<p id="test"></p>' +
+                                      '<p id="answer1">Much Hello</p>' +
+                                      '<p id="test1"></p>' +
+                                      '<p id="answer2">Wow, such funny</p>' +
+                                      '<p id="test2"></p>' +
+                                      '<p id="answer3">Awsome location, much dating</p>' +
+                                      '<div class="messageButton">' +
+
+                                        '<button class="introT">Send Message</button>' +
+                                        '<button class="pickUp">Send Message</button>' +
+                                        '<button class="dateLoc">Send Message</button>' +
+                                        '<button class="doesNothing">Send Message</button>' +
+                                      '</div>' +
+                                    '</div>' +
+                                  '</div>' +
+                                '</div>' +
+                              '</div>'
+                            );
+      }
+      $("#create-profile").hide();
+      $("#profiles").fadeIn();
     }
+    $("#message-vampire").click(function(){
+      $(".message-box-vampire").slideToggle();
+    });
+    $("#message-wolf").click(function(){
+      $(".message-box-wolf").slideToggle();
+    });
+    $("#message-basic").click(function(){
+      $(".message-box-basic").slideToggle();
+    });
+
   });
 
-//
-//
-//   var dark = 0;
-//   var crazy = 0;
-//   var normal = 0;
-//
-//   var profile1 = new Person("Eddie", dark, crazy, normal);
-//
-//   profileDark = true;
-//   profileCrazy = false;
-//   profileNormal = false;
-//
-//   // response to each question. responses output 1 - 3
-//   firstText = 1; // first text
-//   pickUpText = 1; // second text
-//   locationText = 1; // third text
-//
-//   // question2 = 3;
-//   // question3 = 3;
-//
-//   var response1 = ""
-//   var response2 = ""
-//   var response3 = ""
-//   ///// response to question 1
-//
-//   //var textMessage = 0;
-//
-//
-//   Person.prototype.introText = function(){
-//     //Dark person
-//     if (profileDark === true && firstText === 1) {
-//       response1 = "dark intro = DARK response"
-//       this.dark += 1;
-//     } else if (profileDark === true && firstText === 2) {
-//       response1 = "crazy intro = DARK response"
-//     } else if (profileDark === true && firstText === 3) {
-//       response1 = "normal intro= DARK response"
-//       //Crazy person
-//     } else if (profileCrazy === true && firstText === 1) {
-//       response1 = "dark intro= CRAZY response"
-//     } else if (profileCrazy === true && firstText=== 2) {
-//       response1 = "crazy intro= CRAZY response"
-//       this.crazy += 1;
-//     } else if (profileCrazy === true && firstText=== 3) {
-//       response1 = "normal intro= CRAZY response"
-//       //Normal Person
-//     } else if (profileNormal === true && firstText === 1) {
-//       response1 = "dark intro= NORMAL response"
-//     } else if (profileNormal === true && firstText=== 2) {
-//       response1 = "crazy intro = NORMAL response"
-//     } else if (profileNormal === true && firstText === 3) {
-//       response1 = "normal intro = NORMAL response"
-//       this.normal += 1;
-//     }
-//
-//   }
+  // //Score objects
+  // var profileDutchess = new Messages (profileNames[0], 0);
+  // var profileSupul = new Messages (profileNames[1], 0);
+  // var profileBrenda = new Message (profileNames[2], 0);
+  //
+  // var profile1 = new Person("Eddie", dark, crazy, normal);
+  //
+  // profileDark = true;
+  // profileCrazy = false;
+  // profileNormal = false;
+  //
+  // // response to each question. responses output 1 - 3
+  // firstText = 1; // first text
+  // pickUpText = 1; // second text
+  // locationText = 1; // third text
+  //
+  // // question2 = 3;
+  // // question3 = 3;
+  //
+  // var response1 = ""
+  // var response2 = ""
+  // var response3 = ""
+  // ///// response to question 1
+  //
+  // //var textMessage = 0;
+  //
+  //
+  // Person.prototype.introText = function(){
+  //   //Dark person
+  //   if (profileDark === true && firstText === 1) {
+  //     response1 = "dark intro = DARK response"
+  //     this.dark += 1;
+  //   } else if (profileDark === true && firstText === 2) {
+  //     response1 = "crazy intro = DARK response"
+  //   } else if (profileDark === true && firstText === 3) {
+  //     response1 = "normal intro= DARK response"
+  //     //Crazy person
+  //   } else if (profileCrazy === true && firstText === 1) {
+  //     response1 = "dark intro= CRAZY response"
+  //   } else if (profileCrazy === true && firstText=== 2) {
+  //     response1 = "crazy intro= CRAZY response"
+  //     this.crazy += 1;
+  //   } else if (profileCrazy === true && firstText=== 3) {
+  //     response1 = "normal intro= CRAZY response"
+  //     //Normal Person
+  //   } else if (profileNormal === true && firstText === 1) {
+  //     response1 = "dark intro= NORMAL response"
+  //   } else if (profileNormal === true && firstText=== 2) {
+  //     response1 = "crazy intro = NORMAL response"
+  //   } else if (profileNormal === true && firstText === 3) {
+  //     response1 = "normal intro = NORMAL response"
+  //     this.normal += 1;
+  //   }
+  //
+  // }
 //   //introText();
 //
 //   Person.prototype.pickUpLine = function(){
@@ -259,7 +304,4 @@ $(document).ready(function(){
 //   document.getElementById("test2").innerHTML = response3;
 //
 // });
-//
-//
-
 });

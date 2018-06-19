@@ -1,23 +1,24 @@
 img {
-
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
 }
 .initial-hidden {
   display:none;
 }
-
-.moveMeassage {
-  margin-left: 100px;
+#profiles {
+  display: table;
 }
+.col-md-4 {
+  display: table-cell;
+}
+.message-box {
 
-
-.testBox {
-      position: fixed;
-      display: none;
-      width: 400px;
+      /*display: none;*/
+      /*width: 400px;*/
 
       background-color: white;
-      opacity: .8;
+      opacity: .9;
       z-index: 2;
       cursor: pointer;
       border: solid;
@@ -45,15 +46,15 @@ padding: 20px;
 }
 
 .newMessage {
-  display: none;
+  /*display: none;*/
   float: right;
 }
 .box1 {
   text-align: right;
 }
-
-
-
+.profile-h2 {
+  text-align: center;
+}
 .pickUp {
   display: none;
 }
