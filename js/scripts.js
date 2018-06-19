@@ -40,11 +40,12 @@ var profileLikeScore = [10, 10, 10];
 var Player = new Person ()
 
 //Player Responses Messages
-var message1Responses = ["Hello", "Sup Honey Bo Bo", "Greatings, M'lady of the night", "HI // HEY // HEEELLLOOOOO???"];
-var message2Responses = ["I'm going to Wholefoods later, can I pick you up anything?", "Heaven must be missing an Angel", "You so spooky my skeleton is shakin'", "You look like you wanna get WILD!"];
-var message3Responses = ["Tell me more about yourself"];
-var message4Responses = ["Yeah, I really love it here, great place!", "Mmmm yeah idk this place is kinda weird..."];
-var message5Responses = ["Oh you know the usual, I work as a [user input occupation], I enjoy watching Netflix, taking the occasional walk, and [user input hobby]", "#chillaxin at the beach with some brewskis, workin on my tan and hangin out with the bros at the gym #gymlyfe #beachbrews", "Midnight graveyard walks, fog dancing, hula-hooping, and [user-input-hobby]", "Huntin, fishin, muddin, rock crawlin, and [user-input-hobby]"];
+var arrayOfResponses = [playerResponses1, playerResponses2, playerResponses3, playerResponses4, playerResponses5];
+var playerResponses1 = ["Hello", "Sup Honey Bo Bo", "Greatings, M'lady of the night", "HI // HEY // HEEELLLOOOOO???"];
+var playerResponses2 = ["I'm going to Wholefoods later, can I pick you up anything?", "Heaven must be missing an Angel", "You so spooky my skeleton is shakin'", "You look like you wanna get WILD!"];
+var playerResponses3 = ["Tell me more about yourself"];
+var playerResponses4 = ["Yeah, I really love it here, great place!", "Mmmm yeah idk this place is kinda weird..."];
+var playerResponses5 = ["Oh you know the usual, I work as a <span id='entered-occupation'><span>, I enjoy watching Netflix, taking the occasional walk, and <span id='entered-hobby></span>'", "#chillaxin at the beach with some brewskis, workin on my tan and hangin out with the bros at the gym #gymlyfe #beachbrews", "Midnight graveyard walks, fog dancing, hula-hooping, and <span id='entered-hobby></span>", "Huntin, fishin, muddin, rock crawlin, and <span id='entered-hobby></span>"];
 
 
 $(document).ready(function(){
@@ -91,219 +92,58 @@ $(document).ready(function(){
                                       '<strong>About me:</strong> <span class = "profile-about-me">' + newPerson.aboutMe + '</span>' +
                                     '</div>' +
                                     '<div class="panel-body row">' +
-                                      '<button type="button" class="btn btn-primary" id="message-' + newPerson.profileImage + '">Message Me!</button>' +
+                                      '<button type="button" class="btn btn-primary" id="message-' + newPerson.firstName() + '">Message Me!</button>' +
                                       '<div class="newMessage">' +
                                         '<p><strong>1 New Message</strong></p>' +
                                       '</div>' +
                                     '</div>' +
                                   '</div>' +
                                 '</div>' +
-                                '<div class="panel panel-primary initial-hidden message-box-' + newPerson.profileImage + '">' +
+                                '<div class="panel panel-primary initial-hidden message-box-' + newPerson.firstName() + '">' +
                                   '<div class="panel-heading">' +
                                     newPerson.firstName() + ' is Online' +
                                   '</div>' +
-                                  '<div class="panel-body" id="response-' + newPerson.profileImage + '">' +
+                                  '<div class="panel-body" id="response-' + newPerson.firstName() + '">' +
                                     '<div class="message-area">' +
                                       '<p class="initial-show"><strong>*Send ' + newPerson.firstName() + ' a message*</strong></p>' +
-                                      '<div id="message-options">' +
+                                      '<div id="message-options-' + newPerson.firstName() + '">' +
                                       '</div>' +
                                     '</div>' +
                                   '</div>' +
                                 '</div>' +
                               '</div>'
                             );
-        for (b = 0; b < )
-          $("#")
+        for (b = 0; b < arrayOfResponses.length; b++) {
+          $("#message-options-" + newPerson.firstName()).append('<form id="' + newPerson.firstName() + '-form-' + b + '" class="form-inline">' +
+                                         '<select class="form-group input-sm" id="' + newPerson.firstName() + '-options-' + b + '">' +
+                                         '</select>' +
+                                         '<div class="messageButton">' +
+                                           '<button class="introT btn btn-primary btn-sm">Send Message</button>' +
+                                         '</div>' +
+                                       '</form>'
+         );
+          for (c = 0; c < arrayOfResponses[b].length; c++) {
+            $("#" + newPerson.firstName() + "-form-" + b).append(
+              '<option>' + arrayOfResponses[b][c] + '</option>'
+            );
+          }
+        }
+
       }
       $("#create-profile").hide();
       $("#profiles").fadeIn();
     }
-    $("#message-vampire").click(function(){
-      $(".message-box-vampire").slideToggle();
+    $("#message-Dutchess").click(function(){
+      $(".message-box-Dutchess").slideToggle();
     });
-    $("#message-wolf").click(function(){
-      $(".message-box-wolf").slideToggle();
+    $("#message-Supul").click(function(){
+      $(".message-Supul").slideToggle();
     });
-    $("#message-basic").click(function(){
-      $(".message-box-basic").slideToggle();
+    $("#message-Brenda").click(function(){
+      $(".message-box-Brenda").slideToggle();
     });
 
   });
 
-//   //Score objects
-//   var profileDutchess = new Messages (profileNames[0], 0);
-//   var profileSupul = new Messages (profileNames[1], 0);
-//   var profileBrenda = new Message (profileNames[2], 0);
-//
-//   var profile1 = new Person("Eddie", dark, crazy, normal);
-//
-//   profileDark = true;
-//   profileCrazy = false;
-//   profileNormal = false;
-//
-//   // response to each question. responses output 1 - 3
-//   firstText = 1; // first text
-//   pickUpText = 1; // second text
-//   locationText = 1; // third text
-//
-//   // question2 = 3;
-//   // question3 = 3;
-//
-//   var response1 = ""
-//   var response2 = ""
-//   var response3 = ""
-//   ///// response to question 1
-//
-//   //var textMessage = 0;
-//
-//
-//   Person.prototype.introText = function(){
-//     //Dark person
-//     if (profileDark === true && firstText === 1) {
-//       response1 = "dark intro = DARK response"
-//       this.dark += 1;
-//     } else if (profileDark === true && firstText === 2) {
-//       response1 = "crazy intro = DARK response"
-//     } else if (profileDark === true && firstText === 3) {
-//       response1 = "normal intro= DARK response"
-//       //Crazy person
-//     } else if (profileCrazy === true && firstText === 1) {
-//       response1 = "dark intro= CRAZY response"
-//     } else if (profileCrazy === true && firstText=== 2) {
-//       response1 = "crazy intro= CRAZY response"
-//       this.crazy += 1;
-//     } else if (profileCrazy === true && firstText=== 3) {
-//       response1 = "normal intro= CRAZY response"
-//       //Normal Person
-//     } else if (profileNormal === true && firstText === 1) {
-//       response1 = "dark intro= NORMAL response"
-//     } else if (profileNormal === true && firstText=== 2) {
-//       response1 = "crazy intro = NORMAL response"
-//     } else if (profileNormal === true && firstText === 3) {
-//       response1 = "normal intro = NORMAL response"
-//       this.normal += 1;
-//     }
-//
-//   }
-//   //introText();
-//
-//   Person.prototype.pickUpLine = function(){
-//     if (profileDark === true && pickUpText  === 1) {
-//       response2 = "dark pickupline= DARK response";
-//       this.dark += 1;
-//     } else if(profileDark === true && pickUpText === 2){
-//       response2 = "crazy pickUpLine= DARK response";
-//     } else if(profileDark === true && pickUpText  === 3){
-//       response2 = "normal pickUpLine= dark response";
-//
-//     } else if (profileCrazy  === true && pickUpText  === 1) {
-//       response2 = "dark pickupline= CRAZY response";
-//     } else if(profileCrazy  === true && pickUpText === 2){
-//       response2 = "crazy pickUpLine= CRAZY response";
-//       this.crazy += 1;
-//     } else if(profileCrazy === true && pickUpText  === 3){
-//       response2 = "normal pickUpLine = CRAZY  response";
-//
-//     } else if (profileNormal === true && pickUpText  === 1) {
-//       response2 = "dark pickupline= NORMAL response";
-//     } else if(profileNormal  === true && pickUpText  === 2){
-//       response2 = "crazy pickUpLine= NORMAL response";
-//     } else if(profileNormal === true && pickUpText  === 3){
-//       response2 = "normal pickUpLine = NORMAL response";
-//       this.normal += 1;
-//     }
-//
-//
-//   }
-//   //pickUpLine();
-//
-//   Person.prototype.dateLocation = function(){
-//     if (profileDark === true && locationText  === 1) {
-//       response3 = "dark location= DARK response";
-//       this.dark +=1;
-//     } else if (profileDark === true && locationText === 2){
-//       response3 = "crazy location= DARK response";
-//     } else if (profileDark=== true && locationText === 3){
-//       response3 = "normal location= DARK response";
-//
-//     } else if (profileCrazy === true && locationText  === 1) {
-//       response3 = "dark location = CRAZY response";
-//     } else if(profileCrazy === true && locationText === 2){
-//       response3 = "crazy location = CRAZY response";
-//       this.crazy += 1;
-//     } else if(profileCrazy=== true && locationText === 3){
-//       response3 = "normal location=  CRAZY response";
-//
-//     } else if (profileNormal === true && locationText  === 1) {
-//       response3 = "dark location = NORMAL response";
-//     } else if(profileNormal === true && locationText === 2){
-//       response3 = "crazy location= NORMALresponse";
-//     } else if(profileNormal === true && locationText === 3){
-//       response3 = "normal location= NORMAL response";
-//       this.normal += 1;
-//     }
-//
-//   }
-//
-//
-//   profile1.dateLocation();
-//   profile1.introText();
-//   profile1.pickUpLine();
-//
-//
-//   $("button.message").click(function() {
-//     $(".testBox").slideToggle();
-//
-//   });
-//
-//   $("button.introT").click(function() {
-//     $("#test").show();
-//     var text1 = setInterval(answer1, 4000);
-//     function answer1() {
-//       $("#answer1").show();
-//       $(".introT").hide();
-//       $(".pickUp").show();
-//       $(".newMessage").show();
-//       clearInterval(text1);
-//     }
-//   });
-//
-//   $("button.pickUp").click(function() {
-//     $("#test1").show();
-//     $(".newMessage").hide();
-//     var text2 = setInterval(answer2, 4000);
-//     function answer2() {
-//       $(".newMessage").show();
-//       $("#answer2").show();
-//       $(".pickUp").hide();
-//       $(".dateLoc").show();
-//       clearInterval(text2);
-//     }
-//
-//   });
-//
-//
-//   $("button.dateLoc").click(function() {
-//     $("#test2").show();
-//     $(".newMessage").hide();
-//     var text3 = setInterval(answer3, 4000);
-//     function answer3() {
-//       $(".newMessage").show();
-//       $("#answer3").show();
-//      $(".dateLoc").hide();
-//      $(".doesNothing").show();
-//       clearInterval(text3);
-//     }
-//
-//   });
-//
-//
-//
-//
-//
-//   document.getElementById("test").innerHTML = response1;
-//   document.getElementById("test1").innerHTML = response2;
-//   document.getElementById("test2").innerHTML = response3;
-//
-// });
+
 });
