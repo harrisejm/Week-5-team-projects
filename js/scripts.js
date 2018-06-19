@@ -47,104 +47,159 @@ $(document).ready(function(){
   firstText = 1; // first text
   pickUpText = 1; // second text
   locationText = 1; // third text
+  peronalInfo = 1;
 
   // question2 = 3;
   // question3 = 3;
 
-  var response1 = ""
-  var response2 = ""
-  var response3 = ""
+  var response1Dutchess = ""
+  var response1Supul = ""
+  var response1Brenda = ""
+
+  var response2Dutchess = ""
+  var response2Supul = ""
+  var response2Brenda  = ""
+
+  var response3Dutchess = ""
+  var response3Supul = ""
+  var response3Brenda = ""
+
+  var response4Dutchess = ""
+  var response4Supul = ""
+  var response4Brenda = ""
   ///// response to question 1
 
   //var textMessage = 0;
 
 
   Person.prototype.introText = function(){
-    //Dark person
+    //Dark person Dutchess
     if (profileDark === true && firstText === 1) {
-      response1 = "dark intro = DARK response"
+      response1Dutchess = "... "
       this.dark += 1;
     } else if (profileDark === true && firstText === 2) {
-      response1 = "crazy intro = DARK response"
+      response1Dutchess = "... ugh"
     } else if (profileDark === true && firstText === 3) {
-      response1 = "normal intro= DARK response"
-      //Crazy person
+      response1Dutchess = "Greatings morta" + profile1.name;
+    } else if (profileDark === true && firstText === 4) {
+      response1Dutchess = "Um... hello?";
+      //Crazy person Supul
     } else if (profileCrazy === true && firstText === 1) {
-      response1 = "dark intro= CRAZY response"
-    } else if (profileCrazy === true && firstText=== 2) {
-      response1 = "crazy intro= CRAZY response"
+      response1Supul = "Huh? WhaT? You talking to MEEE?"
+    } else if (profileCrazy === true && firstText === 2) {
+      response1Supul = "HONEY WHAT???"
       this.crazy += 1;
-    } else if (profileCrazy === true && firstText=== 3) {
-      response1 = "normal intro= CRAZY response"
-      //Normal Person
+    } else if (profileCrazy === true && firstText === 3) {
+      response1Supul = "WHAT?? WHO TOLD YOU???"
+    } else if (profileCrazy === true && firstText === 4) {
+      response1Supul = "HEEEEEEEEEEEEEEEEYYYY!!!!"
+      //Normal Person Brenda
     } else if (profileNormal === true && firstText === 1) {
-      response1 = "dark intro= NORMAL response"
+      response1Brenda = "Sup"
     } else if (profileNormal === true && firstText=== 2) {
-      response1 = "crazy intro = NORMAL response"
+      response1Brenda  = "Ew"
     } else if (profileNormal === true && firstText === 3) {
-      response1 = "normal intro = NORMAL response"
+      response1Brenda  = "EW"
       this.normal += 1;
-    }
+    } else if (profileNormal === true && firstText === 4) {
+      response1Brenda  = "Ugh"
+      this.normal += 1;
 
   }
   //introText();
 
   Person.prototype.pickUpLine = function(){
     if (profileDark === true && pickUpText  === 1) {
-      response2 = "dark pickupline= DARK response";
+      response2Dutchess = "Oh, no... they don't have anything I could eat";
       this.dark += 1;
     } else if(profileDark === true && pickUpText === 2){
-      response2 = "crazy pickUpLine= DARK response";
+      response2Dutchess = "Speak not of the accursed ones!";
     } else if(profileDark === true && pickUpText  === 3){
-      response2 = "normal pickUpLine= dark response";
+      response2Dutchess = "Oh my, well let us hope it doesn't rattle right out of you haha ;)";
+    } else if(profileDark === true && pickUpText  === 4){
+      response2Dutchess = "Eh, on occasion I suppose...";
+
 
     } else if (profileCrazy  === true && pickUpText  === 1) {
-      response2 = "dark pickupline= CRAZY response";
+      response2Supul = "Bah, where's the fun if the food's just sitting there waitin' for ya?";
     } else if(profileCrazy  === true && pickUpText === 2){
-      response2 = "crazy pickUpLine= CRAZY response";
+      response2Supul = "REEEEEEEE";
       this.crazy += 1;
     } else if(profileCrazy === true && pickUpText  === 3){
-      response2 = "normal pickUpLine = CRAZY  response";
+      response2Supul = "Look, this hair is impossible OK?";
+    } else if(profileCrazy === true && pickUpText  === 4){
+      response2Supul = "AAAWWWWOOOOOOOOOOOOOOOOO!!!!";
 
     } else if (profileNormal === true && pickUpText  === 1) {
-      response2 = "dark pickupline= NORMAL response";
+      response2Brenda = "OOOMG can you pick me up some chai??";
     } else if(profileNormal  === true && pickUpText  === 2){
-      response2 = "crazy pickUpLine= NORMAL response";
+      response2Brenda = "Ew";
     } else if(profileNormal === true && pickUpText  === 3){
-      response2 = "normal pickUpLine = NORMAL response";
+      response2Brenda = "What?? How am I spooky???";
       this.normal += 1;
-    }
-
+    } else if(profileNormal === true && pickUpText  === 3){
+      response2Brenda = "Wow ok slow down there...";
 
   }
-  //pickUpLine();
+
+
+
+  /////
+  Person.prototype.personalInfo = function(){
+    if (profileDark === true && peronalInfo === 1) {
+      response3Dutchess = "First you should know, as my profile mentioned, I am a widow and a recent immigrant to this fine kingdom. Second, I am, due to my work of course, a creature of the night and must spend my days sleeping. I've not yet seen everything the Dark Lord's Kingdom has to offer, but so far I feel right at home.";
+
+    } else if (profileCrazy === true && peronalInfo === 1) {
+      response3Supul = "Where to start, where to start??? I am a fulltime bartender/athletics instructor/hunter (damn site would only let me put in one job). I loooove being out in the wild, the smell of the grass, the scent of the prey... ooooh and the Dark Lord's Kingdom as THE best places to hunt!!!";
+
+    } else if (profileNormal === true && peronalInfo === 1) {
+      response3Brenda = "Let's see... I moved to the Dark Lord's Kingdom on a student visa 8 years ago. After school I already had lots of wage slave offers and so I decided to stay and apply for a work visa. I think maybe it was the seclution in college, but I never realized until afterwards how... strange this country is, and I'm not sure I really fit in...";
+    }
+  }
+
+  Person.prototype.responseDLK = function(){
+    if (profileDark === true && peronalInfo === 1) {
+      response4Dutchess = "Yeah, I really love it here, great place!";
+
+    } else if (profileCrazy === true && peronalInfo === 1) {
+      response4Supul = "Yeah, I really love it here, great place!";
+
+    } else if (profileNormal === true && peronalInfo === 1) {
+      response4Brenda = "Mmmm yeah idk this place is kinda weird...";
+    }
+  }
+
+
+
+
+
+
 
   Person.prototype.dateLocation = function(){
     if (profileDark === true && locationText  === 1) {
-      response3 = "dark location= DARK response";
+      response3Dutchess = "dark location= DARK response";
       this.dark +=1;
     } else if (profileDark === true && locationText === 2){
-      response3 = "crazy location= DARK response";
+      response3Dutchess = "crazy location= DARK response";
     } else if (profileDark=== true && locationText === 3){
-      response3 = "normal location= DARK response";
+      response3Dutchess = "normal location= DARK response";
 
     } else if (profileCrazy === true && locationText  === 1) {
-      response3 = "dark location = CRAZY response";
+      response3Supul = "dark location = CRAZY response";
     } else if(profileCrazy === true && locationText === 2){
-      response3 = "crazy location = CRAZY response";
+      response3Supul = "crazy location = CRAZY response";
       this.crazy += 1;
     } else if(profileCrazy=== true && locationText === 3){
-      response3 = "normal location=  CRAZY response";
+      response3Supul = "normal location=  CRAZY response";
 
     } else if (profileNormal === true && locationText  === 1) {
-      response3 = "dark location = NORMAL response";
+      response3Brenda = "dark location = NORMAL response";
     } else if(profileNormal === true && locationText === 2){
-      response3 = "crazy location= NORMALresponse";
+      response3Brenda = "crazy location= NORMALresponse";
     } else if(profileNormal === true && locationText === 3){
-      response3 = "normal location= NORMAL response";
+      response3Brenda = "normal location= NORMAL response";
       this.normal += 1;
     }
-
   }
 
 
@@ -419,10 +474,6 @@ Person.prototype.dateQuestion6_secondPath = function(){
     this.normal += 1;
   }
 }
-
-
-
-
 
 //profile1.dateQuestion1();
 //profile1.dateQuestion2_firstPath();
