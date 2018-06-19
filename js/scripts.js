@@ -40,13 +40,13 @@ var profileLikeScore = [10, 10, 10];
 var Player = new Person ()
 
 //Player Responses Messages
-var arrayOfResponses = [playerResponses1, playerResponses2, playerResponses3, playerResponses4, playerResponses5];
+
 var playerResponses1 = ["Hello", "Sup Honey Bo Bo", "Greatings, M'lady of the night", "HI // HEY // HEEELLLOOOOO???"];
 var playerResponses2 = ["I'm going to Wholefoods later, can I pick you up anything?", "Heaven must be missing an Angel", "You so spooky my skeleton is shakin'", "You look like you wanna get WILD!"];
 var playerResponses3 = ["Tell me more about yourself"];
 var playerResponses4 = ["Yeah, I really love it here, great place!", "Mmmm yeah idk this place is kinda weird..."];
 var playerResponses5 = ["Oh you know the usual, I work as a <span id='entered-occupation'><span>, I enjoy watching Netflix, taking the occasional walk, and <span id='entered-hobby></span>'", "#chillaxin at the beach with some brewskis, workin on my tan and hangin out with the bros at the gym #gymlyfe #beachbrews", "Midnight graveyard walks, fog dancing, hula-hooping, and <span id='entered-hobby></span>", "Huntin, fishin, muddin, rock crawlin, and <span id='entered-hobby></span>"];
-
+var arrayOfResponses = [playerResponses1, playerResponses2, playerResponses3, playerResponses4, playerResponses5];
 
 $(document).ready(function(){
   $("#sign-up").click(function() {
@@ -123,7 +123,7 @@ $(document).ready(function(){
                                        '</form>'
          );
           for (c = 0; c < arrayOfResponses[b].length; c++) {
-            $("#" + newPerson.firstName() + "-form-" + b).append(
+            $("#" + newPerson.firstName() + "-options-" + b).append(
               '<option>' + arrayOfResponses[b][c] + '</option>'
             );
           }
