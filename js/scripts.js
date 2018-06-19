@@ -1,14 +1,13 @@
-var Person = function(name, dark, crazy, normal) {
+var Person = function(name) {
   this.name = name;
   // this.age = age;
   // this.aboutMe; aboutMe;
   // this.astrolgical = astrolgical;
   // this.occupation = occupation;
-  this.dark = dark;
-  this.crazy = crazy;
-  this.normal = normal;
+  // this.dark = dark;
+  // this.crazy = crazy;
+  // this.normal = normal;
 }
-
 
 var profileNames = ["Helga", "Mindy", "Jane "];
 var profileAges = [45];
@@ -16,41 +15,24 @@ var profileAboutMes = [
   "My name is " + profileNames[Math.floor((Math.random() * 3))] + " I hail from Bavaria. I like beer, bratwurst and Oompah music.  I hold the record for Das Boot in all of Germany. I like strong aggressive men.",
 ];
 
-
 var profileAstrologicals = ["Scorpio"];
 var profileOccupations = ["Beer Witch"];
 
 $(document).ready(function(){
 
-  //profile1 dark
-  //profile2 crazy
-  //profile3 normal
-
-  //question1   intro text message
-  //1 dark intro
-  //2 crazy intro
-  //3 normal intro
-  //question2   pickup line
-  //question4   date location
-
-  var dark = 0;
-  var crazy = 0;
-  var normal = 0;
-
-  var profile1 = new Person("Eddie", dark, crazy, normal);
+  var profile1 = new Person("Eddie");
 
   profileDark = true;
   profileCrazy = false;
   profileNormal = false;
 
   // response to each question. responses output 1 - 3
-  firstText = 1; // first text
-  pickUpText = 1; // second text
-  locationText = 1; // third text
-  peronalInfo = 1;
-
-  // question2 = 3;
-  // question3 = 3;
+  firstText = 1; // 1st text -- 4 options
+  pickUpText = 1; // 2nd text -- 4 options
+  peronalInfoText = 1; // 3rd text -- 1 option
+  responseDLKtext = 1; // 4th text -- 1 option
+  responseToBioText = 1 // 5th text -- 4 options
+  locationText = 1; // 6th text -- 2 options
 
   var response1Dutchess = ""
   var response1Supul = ""
@@ -67,16 +49,19 @@ $(document).ready(function(){
   var response4Dutchess = ""
   var response4Supul = ""
   var response4Brenda = ""
-  ///// response to question 1
 
-  //var textMessage = 0;
+  var response5Dutchess = ""
+  var response5Supul = ""
+  var response5Brenda = ""
 
+  var response6Dutchess = ""
+  var response6Supul = ""
+  var response6Brenda = ""
 
   Person.prototype.introText = function(){
     //Dark person Dutchess
     if (profileDark === true && firstText === 1) {
       response1Dutchess = "... "
-      this.dark += 1;
     } else if (profileDark === true && firstText === 2) {
       response1Dutchess = "... ugh"
     } else if (profileDark === true && firstText === 3) {
@@ -88,7 +73,6 @@ $(document).ready(function(){
       response1Supul = "Huh? WhaT? You talking to MEEE?"
     } else if (profileCrazy === true && firstText === 2) {
       response1Supul = "HONEY WHAT???"
-      this.crazy += 1;
     } else if (profileCrazy === true && firstText === 3) {
       response1Supul = "WHAT?? WHO TOLD YOU???"
     } else if (profileCrazy === true && firstText === 4) {
@@ -100,18 +84,13 @@ $(document).ready(function(){
       response1Brenda  = "Ew"
     } else if (profileNormal === true && firstText === 3) {
       response1Brenda  = "EW"
-      this.normal += 1;
     } else if (profileNormal === true && firstText === 4) {
       response1Brenda  = "Ugh"
-      this.normal += 1;
-
   }
-  //introText();
-
+}
   Person.prototype.pickUpLine = function(){
-    if (profileDark === true && pickUpText  === 1) {
+    if (profileDark === true && pickUpText === 1) {
       response2Dutchess = "Oh, no... they don't have anything I could eat";
-      this.dark += 1;
     } else if(profileDark === true && pickUpText === 2){
       response2Dutchess = "Speak not of the accursed ones!";
     } else if(profileDark === true && pickUpText  === 3){
@@ -119,12 +98,10 @@ $(document).ready(function(){
     } else if(profileDark === true && pickUpText  === 4){
       response2Dutchess = "Eh, on occasion I suppose...";
 
-
     } else if (profileCrazy  === true && pickUpText  === 1) {
       response2Supul = "Bah, where's the fun if the food's just sitting there waitin' for ya?";
     } else if(profileCrazy  === true && pickUpText === 2){
       response2Supul = "REEEEEEEE";
-      this.crazy += 1;
     } else if(profileCrazy === true && pickUpText  === 3){
       response2Supul = "Look, this hair is impossible OK?";
     } else if(profileCrazy === true && pickUpText  === 4){
@@ -136,81 +113,93 @@ $(document).ready(function(){
       response2Brenda = "Ew";
     } else if(profileNormal === true && pickUpText  === 3){
       response2Brenda = "What?? How am I spooky???";
-      this.normal += 1;
-    } else if(profileNormal === true && pickUpText  === 3){
+    } else if(profileNormal === true && pickUpText  === 4){
       response2Brenda = "Wow ok slow down there...";
-
   }
-
-
+  }
 
   /////
   Person.prototype.personalInfo = function(){
-    if (profileDark === true && peronalInfo === 1) {
+    if (profileDark === true && peronalInfoText === 1) {
       response3Dutchess = "First you should know, as my profile mentioned, I am a widow and a recent immigrant to this fine kingdom. Second, I am, due to my work of course, a creature of the night and must spend my days sleeping. I've not yet seen everything the Dark Lord's Kingdom has to offer, but so far I feel right at home.";
 
-    } else if (profileCrazy === true && peronalInfo === 1) {
+    } else if (profileCrazy === true && peronalInfoText === 1) {
       response3Supul = "Where to start, where to start??? I am a fulltime bartender/athletics instructor/hunter (damn site would only let me put in one job). I loooove being out in the wild, the smell of the grass, the scent of the prey... ooooh and the Dark Lord's Kingdom as THE best places to hunt!!!";
 
-    } else if (profileNormal === true && peronalInfo === 1) {
+    } else if (profileNormal === true && peronalInfoText === 1) {
       response3Brenda = "Let's see... I moved to the Dark Lord's Kingdom on a student visa 8 years ago. After school I already had lots of wage slave offers and so I decided to stay and apply for a work visa. I think maybe it was the seclution in college, but I never realized until afterwards how... strange this country is, and I'm not sure I really fit in...";
     }
   }
 
   Person.prototype.responseDLK = function(){
-    if (profileDark === true && peronalInfo === 1) {
+    if (profileDark === true && responseDLKtext === 1) {
       response4Dutchess = "Yeah, I really love it here, great place!";
 
-    } else if (profileCrazy === true && peronalInfo === 1) {
+    } else if (profileCrazy === true && responseDLKtext === 1) {
       response4Supul = "Yeah, I really love it here, great place!";
 
-    } else if (profileNormal === true && peronalInfo === 1) {
+    } else if (profileNormal === true && responseDLKtext === 1) {
       response4Brenda = "Mmmm yeah idk this place is kinda weird...";
     }
   }
 
+  Person.prototype.responseToBio = function(){
+    if (profileDark === true && responseToBioText === 1) {
+      response5Dutchess = "How… pedantic.";
+    } else if (profileDark === true && responseToBioText === 2){
+      response5Dutchess = "In… in the sun?";
+    } else if (profileDark=== true && responseToBioText === 3){
+      response5Dutchess = "How delightful";
+    } else if (profileDark=== true && responseToBioText === 4){
+      response5Dutchess = "Well, I do love to feed";
 
+    } else if (profileCrazy === true && responseToBioText === 1) {
+      response5Supul = "BO-RING";
+    } else if(profileCrazy === true && responseToBioText === 2){
+      response5Supul = "Mmmm fresh meat";
+    } else if(profileCrazy === true && responseToBioText === 3){
+      response5Supul = "Did you say… HULA-HOOPING??";
+    } else if(profileCrazy === true && responseToBioText === 4){
+      response5Supul = "Yeeeeah! Yes! YES! YESS!";
 
-
-
-
+    } else if (profileNormal === true && responseToBioText === 1) {
+      response5Brenda = "OMG I luv Netflix!!!!!!!!!!!!!!!! I’ve watched every episode of The Office 7 times!";
+    } else if(profileNormal === true && responseToBioText === 2){
+      response5Brenda = "Uuuuuh… cooooooool?";
+    } else if(profileNormal === true && responseToBioText === 3){
+      response5Brenda = "You kinda sound like a creeper.";
+    } else if(profileNormal === true && responseToBioText === 3){
+      response5Brenda = "I’m a Vegan.";
+  }
+}
 
   Person.prototype.dateLocation = function(){
-    if (profileDark === true && locationText  === 1) {
-      response3Dutchess = "dark location= DARK response";
-      this.dark +=1;
+    if (profileDark === true && locationText === 1) {
+      response6Dutchess = "Absolutely, darling.";
     } else if (profileDark === true && locationText === 2){
-      response3Dutchess = "crazy location= DARK response";
-    } else if (profileDark=== true && locationText === 3){
-      response3Dutchess = "normal location= DARK response";
+      response3Dutchess = "I suppose I have the time…";
 
     } else if (profileCrazy === true && locationText  === 1) {
-      response3Supul = "dark location = CRAZY response";
+      response6Supul = "YAYAYAYAYAYA!";
     } else if(profileCrazy === true && locationText === 2){
-      response3Supul = "crazy location = CRAZY response";
-      this.crazy += 1;
-    } else if(profileCrazy=== true && locationText === 3){
-      response3Supul = "normal location=  CRAZY response";
+      response3Supul = "What have I got to lose?";
 
-    } else if (profileNormal === true && locationText  === 1) {
-      response3Brenda = "dark location = NORMAL response";
+    } else if (profileNormal === true && locationText === 1) {
+      response6Brenda = "Uh sure.";
     } else if(profileNormal === true && locationText === 2){
-      response3Brenda = "crazy location= NORMALresponse";
-    } else if(profileNormal === true && locationText === 3){
-      response3Brenda = "normal location= NORMAL response";
-      this.normal += 1;
+      response6Brenda = "Sigh, I guess.";
     }
   }
 
-
-  profile1.dateLocation();
   profile1.introText();
   profile1.pickUpLine();
-
+  profile1.personalInfo();
+  profile1.responseDLK();
+  profile1.responseToBio();
+  profile1.dateLocation();
 
   $("button.message").click(function() {
     $(".testBox").slideToggle();
-
   });
 
   $("button.introT").click(function() {
@@ -253,9 +242,9 @@ $(document).ready(function(){
 
   });
 
-  document.getElementById("test").innerHTML = response1;
-  document.getElementById("test1").innerHTML = response2;
-  document.getElementById("test2").innerHTML = response3;
+  document.getElementById("test").innerHTML = response1Dutchess;
+  document.getElementById("test1").innerHTML = response2Dutchess;
+  document.getElementById("test2").innerHTML = response3Dutchess;
 
 
 //////////////////////////////////
