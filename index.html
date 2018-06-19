@@ -169,36 +169,24 @@
 
       </div>
 
-      <div class="moveMeassage initial-hidden">
-          <div class="profile-messenger">
-            <img src="" alt="">
-            <p>Wow, such profile! Much dating</p>
-            <button class="message">Send Message</button>
-            <div class="newMessage">
-              <p><strong>1 New Message</strong></p>
-            </div>
-          </div>
+      '<div class="panel panel-primary initial-hidden message-box-' + newPerson.profileImage + '">' +
+        '<div class="panel-heading">' +
+          newPerson.firstName() + ' is Online' +
+        '</div>' +
+        '<div class="panel-body" id="response-' +  + '">' +
 
-          <div class="panel panel-primary message-box">
-            <div class="panel-heading">
-              Doge is Online
-            </div>
-            <div class="panel-body">
-
-              <div class="box1">
-                <p class="sendMsg"><strong>*Send Doge a message*</strong></p>
-
-                <div class="messageButton">
-
-                  <button class="introT">Send Message</button>
-                  <button class="pickUp">Send Message</button>
-                  <button class="dateLoc">Send Message</button>
-                  <button class="doesNothing">Send Message</button>
-                </div>
-              </div>
-            </div>
-          </div>
-    </div>
+          '<div class="message-area">' +
+            '<p class="sendMsg"><strong>*Send ' + newPerson.firstName() + ' a message*</strong></p>' +
+            '<form class="form-inline">' +
+              '<select class="form-group input-sm" id="' + newPerson.profileImage + '">' +
+              '</select>' +
+              '<div class="messageButton">' +
+                '<button class="introT btn btn-primary btn-sm">Send Message</button>' +
+              '</div>' +
+            '</form>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
 
 
 
