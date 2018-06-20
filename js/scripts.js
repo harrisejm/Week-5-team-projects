@@ -1,12 +1,9 @@
 var Person = function(name) {
-  this.name = name;
-  // this.age = age;
-  // this.aboutMe; aboutMe;
-  // this.astrolgical = astrolgical;
-  // this.occupation = occupation;
-  // this.dark = dark;
-  // this.crazy = crazy;
-  // this.normal = normal;
+  // this.name = name;
+  // this.profileDark = profileDark;
+  // this.profileCrazy = profileCrazy;
+  // this.profileNormal =profileCrazy;
+
 }
 
 var profileNames = ["Helga", "Mindy", "Jane "];
@@ -22,17 +19,17 @@ $(document).ready(function(){
 
   var profile1 = new Person("Eddie");
 
-  profileDark = true;
-  profileCrazy = false;
-  profileNormal = false;
+  var profileDark = false;
+  var profileCrazy = false;
+  var profileNormal = false;
 
   // response to each question. responses output 1 - 3
-  firstText = 1; // 1st text -- 4 options
-  pickUpText = 1; // 2nd text -- 4 options
-  peronalInfoText = 1; // 3rd text -- 1 option
-  responseDLKtext = 1; // 4th text -- 1 option
-  responseToBioText = 1 // 5th text -- 4 options
-  locationText = 1; // 6th text -- 2 options
+  var firstText = 1; // 1st text -- 4 options
+  var pickUpText = 1; // 2nd text -- 4 options
+  var peronalInfoText = 1; // 3rd text -- 1 option
+  var responseDLKtext = 1; // 4th text -- 1 option
+  var responseToBioText = 1 // 5th text -- 4 options
+  var locationText = 1; // 6th text -- 2 options
 
   var response1Dutchess = ""
   var response1Supul = ""
@@ -191,18 +188,13 @@ $(document).ready(function(){
     }
   }
 
-  profile1.introText();
-  profile1.pickUpLine();
-  profile1.personalInfo();
-  profile1.responseDLK();
-  profile1.responseToBio();
-  profile1.dateLocation();
 
   $("button.message").click(function() {
     $(".testBox").slideToggle();
   });
-
   $("button.introT").click(function() {
+    profileDark = true;
+      profile1.introText();
     $("#test").show();
     var text1 = setInterval(answer1, 4000);
     function answer1() {
@@ -212,9 +204,13 @@ $(document).ready(function(){
       $(".newMessage").show();
       clearInterval(text1);
     }
+    document.getElementById("test").innerHTML = response1Dutchess;
+      profileDark = false;
   });
 
   $("button.pickUp").click(function() {
+    profileDark = true;
+    profile1.pickUpLine();
     $("#test1").show();
     $(".newMessage").hide();
     var text2 = setInterval(answer2, 4000);
@@ -225,10 +221,13 @@ $(document).ready(function(){
       $(".dateLoc").show();
       clearInterval(text2);
     }
-
+    document.getElementById("test1").innerHTML = response2Dutchess;
+  profileDark = false;
   });
 
   $("button.dateLoc").click(function() {
+    profileDark = true
+    profile1.dateLocation();
     $("#test2").show();
     $(".newMessage").hide();
     var text3 = setInterval(answer3, 4000);
@@ -239,34 +238,49 @@ $(document).ready(function(){
      $(".doesNothing").show();
       clearInterval(text3);
     }
-
+    document.getElementById("test2").innerHTML = response6Dutchess;
+      profileDark = false;
   });
 
-  document.getElementById("test").innerHTML = response1Dutchess;
-  document.getElementById("test1").innerHTML = response2Dutchess;
-  document.getElementById("test2").innerHTML = response3Dutchess;
+
+  //profile1.introText();
+  // profile1.pickUpLine();
+  // profile1.personalInfo();
+  // profile1.responseDLK();
+  // profile1.responseToBio();
+  // profile1.dateLocation();
 
 
 //////////////////////////////////
 var dateResponse = "";
 
 
-var question1 = 2;
+var question1 = 1; //branch question 2 options (1 work or 2 hobbies)
 var question2 = 1;
 var question3 = 1;
-var question4 = 3;
-var question5 = 2;
+var question4 = 1;
+var question5 = 1;
 var question6 = 1;
-var question7 = "";
-var question8 = "";
+var question7 = 1;
+var question8 = 1;
 
 
 Person.prototype.dateQuestion1 = function(){
-    if (question1  === 1) {
-      dateResponse = "branch 1 response";
-    } else if (question1 === 2){
-      dateResponse = "branch 2 response";
-}
+  if (question1 === 1 && profileDark === true) {
+    dateResponse = "Of course darling, even before I moved to the Dark Lord’s Kingdom I was a creature of the night. I’m currently haunting the Old Farm Hotel between 11pm and sunrise. I don’t see many people these days but that is ok with me, I only need a few to survive. You should stay a night if you haven’t already, the decor is to die for!";
+  } else if (question1 === 2 && profileDark === true){
+    dateResponse = "Well, I have a great penchant for candelabra, and they have let me do some interior decorating at the hotel when the nights are slow. I am also a collector of fine -red- wines, although unlike most I prefer a younger blend… [she gazes off into the distance apparently lost in this thought.";
+///CRAZY PROFILE
+  } else if (question1 === 1 && profileCrazy === true) {
+    dateResponse = "Aaaah what’s to tell?? I flip bottles and bounce drunks most of the time, but I also make a good deal with all the fresh meat I bring in from my hunts! The bartending is just to fill in the gaps. I live for the hunt!";
+  } else if(question1 === 2 && profileCrazy === true){
+    dateResponse= "YOU BETCHA! Did I mention that I love hunting? I am also a master taxidermist and decorated marathon runner!!! THINK YOU CAN KEEP UP?!?!";
+///NORMAL PROFILE
+  } else if (question1 === 1 && profileNormal === true){
+    dateResponse= "Oooooh you knooooow, I just work a boring nine to five over at the Wage Slave Industries. I got my degree in Wage Slavery, and the Dark Lord’s Kingdom has world class Wage Slavery! The work is fine, it’s the weirdos that get to me…";
+  } else if(question1 === 2 && profileNormal === true){
+    dateResponse= "Ooooh well you know, everyone and everything in this place so so strange and foreign, I basically just watch Netflix these days. Have you seen the Office??";
+  }
 }
 
 ///question branch 1
